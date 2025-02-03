@@ -86,4 +86,9 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url('@/assets/images/backgrounds/background-desktop.png');
+  background-size: cover;
+  background-position: center;
+
 }
