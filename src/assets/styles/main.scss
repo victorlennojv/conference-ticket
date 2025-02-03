@@ -1,0 +1,10 @@
+@use 'base';
+
+#app {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
