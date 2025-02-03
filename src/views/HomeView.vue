@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import DropZone from '@/components/DropZone.vue'
 import UploadFile from '@/components/UploadFile.vue'
 import UserForm from '@/components/UserForm.vue'
 </script>
