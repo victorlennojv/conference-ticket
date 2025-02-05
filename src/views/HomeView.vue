@@ -11,7 +11,7 @@ import UserForm from '@/components/UserForm.vue'
   </header>
   <main>
     <UploadFile upload-text="Upload Avatar"/>
-    <UserForm></UserForm>
+    <UserForm />
   </main>
 </template>
 

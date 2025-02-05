@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
-const emit = defineEmits(['file-dropped'])
+  import { onMounted, onUnmounted } from 'vue';
+  const emit = defineEmits(['file-dropped']);
 
-function onDrop(e) {
-  emit('file-dropped', [...e.dataTransfer.files])
-}
+  function onDrop(e: DragEvent) {
+    emit('file-dropped', [...(e.dataTransfer?.files || '')]);
+  }
 
-function preventDefaults(e) {
-  e.preventDefault()
-}
+  function preventDefaults(e: Event) {
+    e.preventDefault();
+  }
 
-const events = ['dragenter', 'dragover', 'dragleave', 'drop']
+  const events = ['dragenter', 'dragover', 'dragleave', 'drop'];
 
-onMounted(() => {
-  events.forEach((eventName) => {
-    document.body.addEventListener(eventName, preventDefaults)
-  })
-})
+  onMounted(() => {
+    events.forEach((eventName) => {
+      document.body.addEventListener(eventName, preventDefaults);
+    });
+  });
 
-onUnmounted(() => {
-  events.forEach((eventName) => {
-    document.body.removeEventListener(eventName, preventDefaults)
-  })
-})
+  onUnmounted(() => {
+    events.forEach((eventName) => {
+      document.body.removeEventListener(eventName, preventDefaults);
+    });
+  });
 </script>
 
 <template>
