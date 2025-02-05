@@ -24,19 +24,22 @@
 </template>
 
 <script setup lang="ts">
-  import DropZone from '@/components/DropZone.vue';
-  import { useFileValidator } from '@/composables/useValidateFile.ts';
-  import { ref, onUnmounted } from 'vue';
-  import SvgIconsBase from '@/components/ui/icons/SvgIconsBase.vue'
-
   interface Props {
     attentionText?: string;
     uploadText?: string;
   }
 
+  import DropZone from '@/components/DropZone.vue';
+  import { useFileValidator } from '@/composables/useValidateFile.ts';
+  import { ref, onUnmounted } from 'vue';
+  import SvgIconsBase from '@/components/ui/icons/SvgIconsBase.vue'
+  import { useUserForm } from '@/stores/user.ts';
+
+
   const { uploadText = 'Upload', attentionText = 'Upload your photo (JPG, JPEG or PNG, max size: 1MB' } =
     defineProps<Props>();
 
+  const store = useUserForm();
   const { isValid, errorMessage, validateFile } = useFileValidator(['jpg', 'png', 'jpeg'], 1);
 
   const avatar = ref<File | null>(null);
@@ -47,6 +50,7 @@
 
     if (isValid.value) {
       setAvatarPreview(file[0])
+      store.setAvatar(file[0])
     }
   };
 
@@ -60,6 +64,8 @@
 
     if (isValid.value) {
       setAvatarPreview(file)
+      store.setAvatar(file)
+      console.log(store.avatar)
     }
     input.value = '';
   }
@@ -77,6 +83,7 @@
     avatar.value = null;
     avatarPreview.value = null;
     errorMessage.value = '';
+    store.setAvatar(null)
   };
 
   onUnmounted(() => {

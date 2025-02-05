@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import UploadFile from '@/components/UploadFile.vue'
 import UserForm from '@/components/UserForm.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const onSubmit = (): void => {
+  console.log('Submitting...')
+  router.push('/user-ticket');
+}
+
 </script>
 
 <template>
@@ -11,7 +20,7 @@ import UserForm from '@/components/UserForm.vue'
   </header>
   <main>
     <UploadFile upload-text="Upload Avatar"/>
-    <UserForm />
+    <UserForm @submit="onSubmit" />
   </main>
 </template>
 
@@ -21,7 +30,7 @@ header {
   & > h1 {
     font-weight: $font-weight-bold;
     font-size: $font-size-lg;
-    margin-bottom: $spacing-xl;
+    margin-bottom: $spacing-xlg;
 
     & > span {
       color: $primary-color;

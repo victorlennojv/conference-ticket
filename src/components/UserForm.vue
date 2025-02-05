@@ -27,26 +27,33 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
+
+interface Form {
+  name: string;
+  email: string;
+  githubUser: string;
+}
+
   import { reactive, ref } from 'vue';
   import BaseInput from '@/components/ui/BaseInput.vue';
+  import { useUserForm } from '@/stores/user.ts';
 
-  interface Form {
-    name: string;
-    email: string;
-    githubUser: string;
-  }
-
+  const store = useUserForm();
+  const hasError = ref(false);
   const form = reactive<Form>({
     name: '',
     email: '',
     githubUser: '',
   });
 
-  const hasError = ref(false);
+const emit = defineEmits(['submit']);
 
   const handleSubmit = () => {
     if (validateForm(form)) {
-      return console.log('submit');
+      store.setFormData(form);
+      emit('submit')
+      return;
     }
     hasError.value = true;
   };
