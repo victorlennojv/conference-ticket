@@ -128,7 +128,7 @@
     &__avatar {
       width: 80px;
       height: 80px;
-      border-radius: $border-radius-full;
+      border-radius: $border-radius-base;
       object-fit: cover;
       margin-bottom: $spacing-md;
     }
