@@ -7,8 +7,9 @@ I believe that with real use cases, it becomes better to understand the use of V
 It shows: 
  - How props and events works;
  - A case of custom input with the two way data binding;
-
- -
+ - Pinia store
+ - Dynamic component icons (async)
+ - And more
 ```
 
 ## Recommended IDE Setup
